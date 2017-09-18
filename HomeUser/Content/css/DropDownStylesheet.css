@@ -1,0 +1,27 @@
+﻿ .caret-up {
+        width: 0;
+        height: 0;
+        border-left: 4px solid rgba(0, 0, 0, 0);
+        border-right: 4px solid rgba(0, 0, 0, 0);
+        border-bottom: 4px solid;
+        display: inline-block;
+        margin-left: 2px;
+        vertical-align: middle;
+    }
+
+    ul li ul.dropdown {
+        min-width: 100%;
+        background: #f2f2f2;
+        display: none;
+        position: absolute;
+        z-index: 999;
+        left: 0;
+    }
+
+    ul li:hover ul.dropdown {
+        display: block;
+    }
+
+    ul li ul.dropdown li {
+        display: block;
+    }

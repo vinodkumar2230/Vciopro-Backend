@@ -1,0 +1,10 @@
+﻿.has-error .checkbox, .has-error .checkbox-inline, .has-error .control-label, .has-error .help-block, .has-error .radio, .has-error .radio-inline, .has-error.checkbox label, .has-error.checkbox-inline label, .has-error.radio label, .has-error.radio-inline label {
+    color: #dd4b39;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.dashtable table.table th.wdth120, .dashtable table.table td.wdth120 { width:120px;}
+.fourth-col { width:29%; display:inline-block; padding:0 10px; vertical-align:top;}
+.input-group .e-datewidget { width:100%;}
+.first-col, .second-col { width:30%;}

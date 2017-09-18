@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cb87dadb1f57427dab47c810c2cae59d" Name="Diagram1">
+        <EntityTypeShape EntityType="surajmandalModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="surajmandalModel.AspNetRole" Width="1.5" PointX="3.75" PointY="2.5" />
+        <EntityTypeShape EntityType="surajmandalModel.AspNetUserClaim" Width="1.5" PointX="8.25" PointY="1" />
+        <EntityTypeShape EntityType="surajmandalModel.AspNetUserLogin" Width="1.5" PointX="8.25" PointY="3.75" />
+        <EntityTypeShape EntityType="surajmandalModel.AspNetUser" Width="1.5" PointX="6" PointY="1.375" />
+        <EntityTypeShape EntityType="surajmandalModel.City" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="surajmandalModel.Country" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="surajmandalModel.ProductPlan" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="surajmandalModel.state" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="surajmandalModel.Tenant" Width="1.5" PointX="2.75" PointY="9.75" />
+        <EntityTypeShape EntityType="surajmandalModel.TenantBillingInfo" Width="1.5" PointX="8.75" PointY="9.75" />
+        <EntityTypeShape EntityType="surajmandalModel.TenantCardInfo" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="surajmandalModel.User" Width="1.5" PointX="10.75" PointY="4.75" />
+        <AssociationConnector Association="surajmandalModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="surajmandalModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="surajmandalModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="surajmandalModel.Organisation" Width="1.5" PointX="11.375" PointY="10.75" />
+        <AssociationConnector Association="surajmandalModel.FK_states_Countries" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
