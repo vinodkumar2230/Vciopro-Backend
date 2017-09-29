@@ -168,33 +168,29 @@ namespace HomeUser.Controllers
         [AllowAnonymous]
         [Route("/api/Account/Login")]
     public IHttpActionResult Login(LoginViewModel model)
-    {
-            vCIOPRoEntities db = new vCIOPRoEntities();
-            var user = db.Users.SingleOrDefault(x => x.UserName == model.Email && x.Password == model.Password);
-            if (user == null)
-            return Unauthorized();
+    { 
+            bool userLoggedIn = _tenantDataManager.LoginUser(model);
+
+            if (userLoggedIn == false)
+            return Unauthorized(); 
 
         var tokenHandler = new JwtSecurityTokenHandler();
-        //   var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
-        var tokenDescriptor = new SecurityTokenDescriptor
+        var tokenDescriptor = new SecurityTokenDescriptor  
         {
             Subject = new ClaimsIdentity(new Claim[]
             {
-                    new Claim(ClaimTypes.Name, user.ID.ToString())
+                    new Claim(ClaimTypes.Name, model.UserId.ToString())
             }),
             Expires = DateTime.UtcNow.AddDays(7),
-            //SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };
         var token = tokenHandler.CreateToken(tokenDescriptor);
         var tokenString = tokenHandler.WriteToken(token);
 
-        // return basic user info (without password) and token to store client side
         return Ok(new
         {
-            Id = user.ID,
-            Username = user.UserName,
-            Password = user.Password,
-           // LastName = user.LastName,
+            Id =model.UserId,
+            Username = model.Email,
+            Password =model.Password,
             Token = tokenString
         });
 

@@ -18,6 +18,7 @@ namespace RepositoryLayer
         public Country()
         {
             this.states = new HashSet<state>();
+            this.Locations = new HashSet<Location>();
         }
     
         public int ID { get; set; }
@@ -26,5 +27,7 @@ namespace RepositoryLayer
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<state> states { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Location> Locations { get; set; }
     }
 }

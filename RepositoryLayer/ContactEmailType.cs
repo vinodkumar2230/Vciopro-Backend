@@ -12,20 +12,18 @@ namespace RepositoryLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class state
+    public partial class ContactEmailType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public state()
+        public ContactEmailType()
         {
-            this.Locations = new HashSet<Location>();
+            this.ContactEmails = new HashSet<ContactEmail>();
         }
     
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public int countryid { get; set; }
+        public int EmailTypeId { get; set; }
+        public string EmailTypeName { get; set; }
     
-        public virtual Country Country { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Location> Locations { get; set; }
+        public virtual ICollection<ContactEmail> ContactEmails { get; set; }
     }
 }

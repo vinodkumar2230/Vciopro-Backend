@@ -25,6 +25,14 @@ namespace ServiceLayer
         {
             unitOfWork = _UnitOfWork;
         }
+        public bool LoginUser(LoginViewModel model)
+        {
+            vCIOPRoEntities db = new vCIOPRoEntities();
+            var user = db.Users.SingleOrDefault(x => x.UserName == model.Email && x.Password == model.Password);
+            if (user != null) { return true; }
+            else
+                return false;   
+        }
 
         public bool AddUser(APiRegisterViewModel model)
         {
@@ -76,7 +84,7 @@ namespace ServiceLayer
                         Address1 = model.Address,
                         Address2 = model.Address2,
                         CountryId =model.CountryId,
-                        StateId =3,
+                        StateId =model.StateId,
                         City = model.City,
                         ZipCode = model.Postalcode
                     };
@@ -103,7 +111,7 @@ namespace ServiceLayer
                     var toEmailIds1 = model.Email;
                     string mailBody1 = "Greetings of The Day<br/> Congratulations you have been successfully registered with vCIOPRo.";
                     Attachment attachedfile = null;
-                    ServiceLayer.EmailHelper.EmailHelper.SendEmail(toEmailIds1, mailBody1, "Booking Request", attachedfile, true);
+                    ServiceLayer.EmailHelper.EmailHelper.SendEmail(toEmailIds1, mailBody1, "Registration Successful", attachedfile, true);
                 }
 
                 catch (Exception ex)

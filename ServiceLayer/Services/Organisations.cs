@@ -12,6 +12,8 @@ namespace ServiceLayer.Services
 {
     public class Organisations : IOrganisations
     {
+        private vCIOPRoEntities _ctx = new vCIOPRoEntities();
+
 
         private UnitOfWork unitOfWork { get; set; }
 
@@ -21,28 +23,21 @@ namespace ServiceLayer.Services
         }
         public List<Organisation> GetAllOrganisations()
         {
-            var orgdata = unitOfWork.OrganisationRepository.Get().ToList();
 
-            return orgdata;
+        // var orgdata = unitOfWork.OrganisationRepository.Get().ToList();
+
+        var query = (from result in _ctx.Organisations
+                                        where result.isDeleted == false
+                        select result).ToList();
+        
+            return query;
         }
         public Organisation GetOrgById(int id)
         {
             var data = unitOfWork.OrganisationRepository.GetByID(id);
             return data;
         }
-        //public List<Organisation> GetAllOrganisations(OrganisationsViewModel model)
-        //{
-        //    var data = unitOfWork.OrganisationRepository.Get().ToList();
-
-        //    return data;
-        //}
-
-        //public List<Organisation> GetAllOrganisationbyID(int OrganisationId,OrganisationsViewModel model)
-        //{
-        //     var data = unitOfWork.OrganisationRepository.GetByID(model.OrganisationId);
-
-        //    return data;
-        //}
+       
         public bool AddOrg(OrganisationsViewModel model)
         {
             vCIOPRoEntities context = new vCIOPRoEntities();
@@ -62,6 +57,7 @@ namespace ServiceLayer.Services
                         LastName = model.LastName,
                         Description = model.Description,
                         Email = model.Email,
+                        isDeleted = false,
                         Phone = model.Phone,
                         ImagePath="fghuir",
                         AlertMessage="fjg"
@@ -88,10 +84,15 @@ namespace ServiceLayer.Services
             {
                 using (var scope = new TransactionScope())
                 {
-                    var organisationModel = unitOfWork.OrganisationRepository.GetByID(model.OrganisationId);
+                    var organisationModel = unitOfWork.OrganisationRepository.GetByID(model.OrgId);
                     if (organisationModel != null)
                     {
+                        organisationModel.OrgId = model.OrgId;
                         organisationModel.OrgName = model.OrgName;
+                        organisationModel.FirstName = model.FirstName;
+                        organisationModel.ShortName = model.ShortName;
+                        organisationModel.Email = model.Email;
+                        organisationModel.Phone = model.Phone;
                         unitOfWork.OrganisationRepository.Update(organisationModel);
                         unitOfWork.Save();
                         scope.Complete();
@@ -111,7 +112,8 @@ namespace ServiceLayer.Services
                     var organisation = unitOfWork.OrganisationRepository.GetByID(OrganisationId);
                     if (organisation != null)
                     {
-                        unitOfWork.OrganisationRepository.Delete(organisation);
+                        organisation.isDeleted = true;
+                        unitOfWork.OrganisationRepository.Update(organisation);
                         unitOfWork.Save();
                         scope.Complete();
                         success = true;

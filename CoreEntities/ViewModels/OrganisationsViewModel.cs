@@ -8,7 +8,7 @@ namespace CoreEntities.ViewModels
 {
     public class OrganisationsViewModel
     {
-        public int OrganisationId { get; set; }
+        public int OrgId { get; set; }
         public string OrgName { get; set; }
         public string ShortName { get; set; }
         public string FirstName { get; set; }

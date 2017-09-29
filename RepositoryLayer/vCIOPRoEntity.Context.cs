@@ -39,5 +39,19 @@ namespace RepositoryLayer
         public virtual DbSet<TenantCardInfo> TenantCardInfoes { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Organisation> Organisations { get; set; }
+        public virtual DbSet<ContactType> ContactTypes { get; set; }
+        public virtual DbSet<Location> Locations { get; set; }
+        public virtual DbSet<Password> Passwords { get; set; }
+        public virtual DbSet<ContactEmail> ContactEmails { get; set; }
+        public virtual DbSet<ContactEmailType> ContactEmailTypes { get; set; }
+        public virtual DbSet<ContactLocation> ContactLocations { get; set; }
+        public virtual DbSet<ContactPhone> ContactPhones { get; set; }
+        public virtual DbSet<ContactPhoneType> ContactPhoneTypes { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<Configuration> Configurations { get; set; }
+        public virtual DbSet<ConfigurationStatu> ConfigurationStatus { get; set; }
+        public virtual DbSet<ConfigurationType> ConfigurationTypes { get; set; }
+        public virtual DbSet<Manufacturer> Manufacturers { get; set; }
+        public virtual DbSet<PasswordCategory> PasswordCategories { get; set; }
     }
 }

@@ -11,5 +11,6 @@ namespace ServiceLayer.Interfaces
     public interface IRegistration
     {
         bool  AddUser(APiRegisterViewModel model);
+        bool LoginUser(LoginViewModel model);
     }
 }

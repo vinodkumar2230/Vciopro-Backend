@@ -10,10 +10,6 @@ namespace ServiceLayer.EmailHelper
 {
     public class EmailHelper
     {
-
-        
-
-
         public static void SendEmail(string emailid, string body, string subject, Attachment attachmentObj, bool async)
         {
 

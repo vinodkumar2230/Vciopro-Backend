@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cb87dadb1f57427dab47c810c2cae59d" Name="Diagram1">
+      <Diagram DiagramId="cb87dadb1f57427dab47c810c2cae59d" Name="Diagram1" ZoomLevel="109">
         <EntityTypeShape EntityType="surajmandalModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="3.75" />
         <EntityTypeShape EntityType="surajmandalModel.AspNetRole" Width="1.5" PointX="3.75" PointY="2.5" />
         <EntityTypeShape EntityType="surajmandalModel.AspNetUserClaim" Width="1.5" PointX="8.25" PointY="1" />
@@ -23,6 +23,29 @@
         <AssociationConnector Association="surajmandalModel.AspNetUserRoles" />
         <EntityTypeShape EntityType="surajmandalModel.Organisation" Width="1.5" PointX="11.375" PointY="10.75" />
         <AssociationConnector Association="surajmandalModel.FK_states_Countries" />
+        <EntityTypeShape EntityType="surajmandalModel.Location" Width="1.5" PointX="13.625" PointY="9.25" />
+        <EntityTypeShape EntityType="surajmandalModel.Password" Width="1.5" PointX="13.375" PointY="0.75" />
+        <AssociationConnector Association="surajmandalModel.FK_Locations_Countries" />
+        <AssociationConnector Association="surajmandalModel.FK_Locations_Organisations" />
+        <AssociationConnector Association="surajmandalModel.FK_Locations_states" />
+        <EntityTypeShape EntityType="surajmandalModel.ContactEmail" Width="1.5" PointX="18" PointY="1" />
+        <EntityTypeShape EntityType="surajmandalModel.ContactEmailType" Width="1.5" PointX="15.75" PointY="1.375" />
+        <EntityTypeShape EntityType="surajmandalModel.ContactLocation" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="surajmandalModel.ContactPhone" Width="1.5" PointX="8" PointY="15" />
+        <EntityTypeShape EntityType="surajmandalModel.ContactPhoneType" Width="1.5" PointX="5.75" PointY="15.375" />
+        <EntityTypeShape EntityType="surajmandalModel.Contact" Width="1.5" PointX="14" PointY="14.625" />
+        <AssociationConnector Association="surajmandalModel.FK_ContactEmails_ContactEmailTypes" />
+        <AssociationConnector Association="surajmandalModel.FK_ContactPhones_ContactPhoneTypes" />
+        <AssociationConnector Association="surajmandalModel.FK_Contacts_Organisations" />
+        <EntityTypeShape EntityType="surajmandalModel.Configuration" Width="1.5" PointX="16.375" PointY="4.75" />
+        <EntityTypeShape EntityType="surajmandalModel.ConfigurationStatu" Width="1.5" PointX="10.375" PointY="16.75" />
+        <EntityTypeShape EntityType="surajmandalModel.ConfigurationType" Width="1.5" PointX="16.375" PointY="13.75" />
+        <EntityTypeShape EntityType="surajmandalModel.Manufacturer" Width="1.5" PointX="16.375" PointY="17.75" />
+        <EntityTypeShape EntityType="surajmandalModel.PasswordCategory" Width="1.5" PointX="11.125" PointY="20.75" />
+        <AssociationConnector Association="surajmandalModel.FK_Password_PasswordCategory" />
+      </Diagram>
+      <Diagram DiagramId="b2c8da95190c468fbd01aab91ae61f94" Name="Diagram2" >
+        <EntityTypeShape EntityType="surajmandalModel.ContactType" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

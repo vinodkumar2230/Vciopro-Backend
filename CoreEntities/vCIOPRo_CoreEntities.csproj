@@ -62,7 +62,11 @@
     <Compile Include="Domain\RegisterUser.cs" />
     <Compile Include="Domain\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ConfigurationViewModel.cs" />
+    <Compile Include="ViewModels\ContactViewModel.cs" />
+    <Compile Include="ViewModels\LocationsViewModel.cs" />
     <Compile Include="ViewModels\OrganisationsViewModel.cs" />
+    <Compile Include="ViewModels\PasswordViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\ResponseViewModel.cs" />
     <Compile Include="ViewModels\UserDetailsViewModel.cs" />

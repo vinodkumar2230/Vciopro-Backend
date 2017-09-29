@@ -103,15 +103,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmailHelper\EmailHelper.cs" />
+    <Compile Include="Interfaces\IConfiguration.cs" />
+    <Compile Include="Interfaces\IContacts.cs" />
     <Compile Include="Interfaces\ICountry.cs" />
+    <Compile Include="Interfaces\ILocations.cs" />
     <Compile Include="Interfaces\IOrganisations.cs" />
+    <Compile Include="Interfaces\IPassword.cs" />
     <Compile Include="Interfaces\IRegistration.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Interfaces\IState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Configurations.cs" />
+    <Compile Include="Services\Contacts.cs" />
     <Compile Include="Services\Countries.cs" />
+    <Compile Include="Services\Locations.cs" />
     <Compile Include="Services\Organisations.cs" />
+    <Compile Include="Services\Passwords.cs" />
     <Compile Include="Services\Registration.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -12,20 +12,22 @@ namespace RepositoryLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class state
+    public partial class Location
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public state()
-        {
-            this.Locations = new HashSet<Location>();
-        }
-    
-        public int ID { get; set; }
+        public int LocationId { get; set; }
+        public int OrganizationID { get; set; }
         public string Name { get; set; }
-        public int countryid { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public Nullable<int> CountryID { get; set; }
+        public Nullable<int> StateID { get; set; }
+        public string City { get; set; }
+        public string Zip { get; set; }
+        public string Phone { get; set; }
+        public Nullable<bool> isPrimary { get; set; }
     
         public virtual Country Country { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Location> Locations { get; set; }
+        public virtual Organisation Organisation { get; set; }
+        public virtual state state { get; set; }
     }
 }

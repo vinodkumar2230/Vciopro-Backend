@@ -72,6 +72,10 @@ namespace HomeUser.App_Start
             kernel.Bind<ServiceLayer.Interfaces.IOrganisations>().To<ServiceLayer.Services.Organisations>();
             kernel.Bind<ServiceLayer.Interfaces.ICountry>().To<ServiceLayer.Services.Countries>();
             kernel.Bind<ServiceLayer.Interfaces.IState>().To<ServiceLayer.Services.states>();
+            kernel.Bind<ServiceLayer.Interfaces.ILocations>().To<ServiceLayer.Services.Locations>();
+            kernel.Bind<ServiceLayer.Interfaces.IContacts>().To<ServiceLayer.Services.Contacts>();
+            kernel.Bind<ServiceLayer.Interfaces.IConfiguration>().To<ServiceLayer.Services.Configurations>();
+            kernel.Bind<ServiceLayer.Interfaces.IPassword>().To<ServiceLayer.Services.Passwords>();
         }
     }
 }

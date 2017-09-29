@@ -12,36 +12,26 @@ namespace RepositoryLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class Organisation
+    public partial class PasswordCategory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Organisation()
+        public PasswordCategory()
         {
-            this.Locations = new HashSet<Location>();
-            this.Contacts = new HashSet<Contact>();
+            this.Passwords = new HashSet<Password>();
         }
     
-        public int OrgId { get; set; }
-        public string OrgName { get; set; }
-        public string ShortName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        public string Description { get; set; }
-        public string ImagePath { get; set; }
-        public string AlertMessage { get; set; }
-        public Nullable<bool> isDeleted { get; set; }
+        public int ID { get; set; }
+        public Nullable<System.Guid> TenantId { get; set; }
+        public string Name { get; set; }
         public Nullable<int> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<int> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
         public Nullable<int> DeletedBy { get; set; }
         public Nullable<System.DateTime> DeletedDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Location> Locations { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contact> Contacts { get; set; }
+        public virtual ICollection<Password> Passwords { get; set; }
     }
 }

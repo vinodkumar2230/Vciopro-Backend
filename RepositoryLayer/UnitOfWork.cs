@@ -55,6 +55,86 @@ namespace RepositoryLayer
         IGenericRepository<Organisation> _organisationRepository;
         IGenericRepository<Country> _countryRepository;
         IGenericRepository<state> _stateRepository;
+        IGenericRepository<Location> _locationRepository;
+        IGenericRepository<Configuration> _configRepository;
+        IGenericRepository<Contact> _contactRepository;
+        IGenericRepository<ContactEmail> _contact1Repository;
+        IGenericRepository<ContactPhone> _contact2Repository;
+        IGenericRepository<Password> _passwordRepository;
+        #region "Password Repository"
+        public IGenericRepository<Password> PasswordRepository
+        {
+            get
+            {
+                if (_passwordRepository == null)
+                {
+                    _passwordRepository = new GenericRepository<Password>(_context);
+                }
+
+                return _passwordRepository;
+            }
+        }
+        #endregion
+        public IGenericRepository<Configuration> ConfigRepository
+        {
+            get
+            {
+                if (_configRepository == null)
+                {
+                    _configRepository = new GenericRepository<Configuration>(_context);
+                }
+
+                return _configRepository;
+            }
+        }
+        public IGenericRepository<ContactEmail> Contact1Repository
+        {
+            get
+            {
+                if (_contact1Repository == null)
+                {
+                    _contact1Repository = new GenericRepository<ContactEmail>(_context);
+                }
+
+                return _contact1Repository;
+            }
+        }
+        public IGenericRepository<ContactPhone> Contact2Repository
+        {
+            get
+            {
+                if (_contact2Repository == null)
+                {
+                    _contact2Repository = new GenericRepository<ContactPhone>(_context);
+                }
+
+                return _contact2Repository;
+            }
+        }
+        public IGenericRepository<Contact> ContactRepository
+        {
+            get
+            {
+                if (_contactRepository == null)
+                {
+                    _contactRepository = new GenericRepository<Contact>(_context);
+                }
+
+                return _contactRepository;
+            }
+        }
+        public IGenericRepository<Location> LocationRepository
+        {
+            get
+            {
+                if (_locationRepository == null)
+                {
+                    _locationRepository = new GenericRepository<Location>(_context);
+                }
+
+                return _locationRepository;
+            }
+        }
         public IGenericRepository<Country> CountryRepository
         {
             get

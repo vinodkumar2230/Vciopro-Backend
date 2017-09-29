@@ -92,6 +92,36 @@
     <Compile Include="City.cs">
       <DependentUpon>vCIOPRoEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Configuration.cs">
+      <DependentUpon>vCIOPRoEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurationStatu.cs">
+      <DependentUpon>vCIOPRoEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurationType.cs">
+      <DependentUpon>vCIOPRoEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.cs">
+      <DependentUpon>vCIOPRoEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactEmail.cs">
+      <DependentUpon>vCIOPRoEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactEmailType.cs">
+      <DependentUpon>vCIOPRoEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactLocation.cs">
+      <DependentUpon>vCIOPRoEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactPhone.cs">
+      <DependentUpon>vCIOPRoEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactPhoneType.cs">
+      <DependentUpon>vCIOPRoEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactType.cs">
+      <DependentUpon>vCIOPRoEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Country.cs">
       <DependentUpon>vCIOPRoEntity.tt</DependentUpon>
     </Compile>
@@ -102,7 +132,19 @@
     <Compile Include="IEntitiesContext.cs" />
     <Compile Include="IGenericRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="Location.cs">
+      <DependentUpon>vCIOPRoEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Manufacturer.cs">
+      <DependentUpon>vCIOPRoEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Organisation.cs">
+      <DependentUpon>vCIOPRoEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Password.cs">
+      <DependentUpon>vCIOPRoEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PasswordCategory.cs">
       <DependentUpon>vCIOPRoEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductPlan.cs">

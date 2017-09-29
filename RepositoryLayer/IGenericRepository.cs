@@ -13,10 +13,7 @@ namespace RepositoryLayer
 
         TEntity GetByID(object id);
         state GetStateByID(int id);
-
         void Insert(TEntity entity);
-         
-
         void Delete(object id);
 
         void Delete(TEntity entityToDelete);

@@ -74,6 +74,142 @@
           <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="Stateid" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Configuration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Typeid" Type="int" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="OrganizationId" Type="int" Nullable="false" />
+          <Property Name="ExpirationDate" Type="datetime" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="500" />
+          <Property Name="PurchaseDate" Type="datetime" />
+          <Property Name="PurchasedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="SerialNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetTag" Type="nvarchar" MaxLength="100" />
+          <Property Name="ManufacturerId" Type="int" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="LocationId" Type="int" />
+          <Property Name="ContactId" Type="int" />
+          <Property Name="InstallDate" Type="datetime" />
+          <Property Name="InstalledBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="PhysicalPosition" Type="nvarchar" MaxLength="100" />
+          <Property Name="Hostname" Type="nvarchar" MaxLength="100" />
+          <Property Name="PrimaryIP" Type="nvarchar" MaxLength="15" />
+          <Property Name="MacAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="DefaultGateway" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlatformId" Type="int" />
+          <Property Name="OperatingSystemId" Type="int" />
+          <Property Name="OperatingSystemNotes" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="AccesstoAll" Type="bit" />
+          <Property Name="DataSourceId" Type="bigint" />
+          <Property Name="DataSourceType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ConfigurationStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TenantId" Type="uniqueidentifier" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="ConfigurationType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TenantId" Type="uniqueidentifier" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="ContactEmails">
+          <Key>
+            <PropertyRef Name="ContactEmailId" />
+          </Key>
+          <Property Name="ContactEmailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactId" Type="int" />
+          <Property Name="EmailTypeId" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="isPrimaryEmail" Type="bit" />
+          <Property Name="isDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="ContactEmailTypes">
+          <Key>
+            <PropertyRef Name="EmailTypeId" />
+          </Key>
+          <Property Name="EmailTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContactLocations">
+          <Key>
+            <PropertyRef Name="ContactLocationId" />
+          </Key>
+          <Property Name="ContactLocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenantID" Type="uniqueidentifier" />
+          <Property Name="ContactLocationName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ContactPhones">
+          <Key>
+            <PropertyRef Name="ContactPhoneId" />
+          </Key>
+          <Property Name="ContactPhoneId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactId" Type="int" />
+          <Property Name="PhoneTypeId" Type="int" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ext" Type="nvarchar" MaxLength="5" />
+          <Property Name="isPrimaryPhone" Type="bit" />
+          <Property Name="isDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="ContactPhoneTypes">
+          <Key>
+            <PropertyRef Name="PhoneTypeId" />
+          </Key>
+          <Property Name="PhoneTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PhoneTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contacts">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="TypeID" Type="int" />
+          <Property Name="LocationID" Type="int" />
+          <Property Name="IsImportantContact" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="ContactTypes">
+          <Key>
+            <PropertyRef Name="ContactTypeId" />
+          </Key>
+          <Property Name="ContactTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenantID" Type="uniqueidentifier" />
+          <Property Name="ContactTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Countries">
           <Key>
             <PropertyRef Name="ID" />
@@ -81,6 +217,37 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Sortname" Type="nvarchar" MaxLength="3" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Locations">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryID" Type="int" />
+          <Property Name="StateID" Type="int" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Zip" Type="nvarchar" MaxLength="10" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="isPrimary" Type="bit" />
+        </EntityType>
+        <EntityType Name="Manufacturer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="TenantId" Type="uniqueidentifier" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="Organisations">
           <Key>
@@ -101,6 +268,46 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedBy" Type="int" />
           <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Password">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrganizationId" Type="int" Nullable="false" />
+          <Property Name="AssetType" Type="int" />
+          <Property Name="AssetId" Type="int" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" />
+          <Property Name="PasswordChangeDate" Type="datetime" />
+          <Property Name="IsEmbedded" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="URL" Type="nvarchar" MaxLength="100" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="500" />
+          <Property Name="AccessToAll" Type="bit" />
+        </EntityType>
+        <EntityType Name="PasswordCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenantId" Type="uniqueidentifier" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" />
           <Property Name="DeletedBy" Type="int" />
           <Property Name="DeletedDate" Type="datetime" />
         </EntityType>
@@ -242,6 +449,54 @@
           <Property Name="ProfilePic" Type="nvarchar" MaxLength="200" />
           <Property Name="RoleId" Type="int" />
         </EntityType>
+        <Association Name="FK_ContactEmails_ContactEmailTypes">
+          <End Role="ContactEmailTypes" Type="Self.ContactEmailTypes" Multiplicity="1" />
+          <End Role="ContactEmails" Type="Self.ContactEmails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactEmailTypes">
+              <PropertyRef Name="EmailTypeId" />
+            </Principal>
+            <Dependent Role="ContactEmails">
+              <PropertyRef Name="EmailTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactPhones_ContactPhoneTypes">
+          <End Role="ContactPhoneTypes" Type="Self.ContactPhoneTypes" Multiplicity="1" />
+          <End Role="ContactPhones" Type="Self.ContactPhones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactPhoneTypes">
+              <PropertyRef Name="PhoneTypeId" />
+            </Principal>
+            <Dependent Role="ContactPhones">
+              <PropertyRef Name="PhoneTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contacts_ContactTypes">
+          <End Role="ContactTypes" Type="Self.ContactTypes" Multiplicity="0..1" />
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactTypes">
+              <PropertyRef Name="ContactTypeId" />
+            </Principal>
+            <Dependent Role="Contacts">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contacts_Organisations">
+          <End Role="Organisations" Type="Self.Organisations" Multiplicity="1" />
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organisations">
+              <PropertyRef Name="OrgId" />
+            </Principal>
+            <Dependent Role="Contacts">
+              <PropertyRef Name="OrganizationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -298,6 +553,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Locations_Countries">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
+          <End Role="Locations" Type="Self.Locations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Locations">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Locations_Organisations">
+          <End Role="Organisations" Type="Self.Organisations" Multiplicity="1" />
+          <End Role="Locations" Type="Self.Locations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organisations">
+              <PropertyRef Name="OrgId" />
+            </Principal>
+            <Dependent Role="Locations">
+              <PropertyRef Name="OrganizationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Locations_states">
+          <End Role="states" Type="Self.states" Multiplicity="0..1" />
+          <End Role="Locations" Type="Self.Locations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="states">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Locations">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Password_PasswordCategory">
+          <End Role="PasswordCategory" Type="Self.PasswordCategory" Multiplicity="0..1" />
+          <End Role="Password" Type="Self.Password" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasswordCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Password">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_states_Countries">
           <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
           <End Role="states" Type="Self.states" Multiplicity="*" />
@@ -318,14 +621,44 @@
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Configuration" EntityType="Self.Configuration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConfigurationStatus" EntityType="Self.ConfigurationStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConfigurationType" EntityType="Self.ConfigurationType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactEmails" EntityType="Self.ContactEmails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactEmailTypes" EntityType="Self.ContactEmailTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactLocations" EntityType="Self.ContactLocations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactPhones" EntityType="Self.ContactPhones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactPhoneTypes" EntityType="Self.ContactPhoneTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactTypes" EntityType="Self.ContactTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Organisations" EntityType="Self.Organisations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Password" EntityType="Self.Password" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PasswordCategory" EntityType="Self.PasswordCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductPlan" EntityType="Self.ProductPlan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="states" EntityType="Self.states" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tenant" EntityType="Self.Tenant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TenantBillingInfo" EntityType="Self.TenantBillingInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TenantCardInfo" EntityType="Self.TenantCardInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ContactEmails_ContactEmailTypes" Association="Self.FK_ContactEmails_ContactEmailTypes">
+            <End Role="ContactEmailTypes" EntitySet="ContactEmailTypes" />
+            <End Role="ContactEmails" EntitySet="ContactEmails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactPhones_ContactPhoneTypes" Association="Self.FK_ContactPhones_ContactPhoneTypes">
+            <End Role="ContactPhoneTypes" EntitySet="ContactPhoneTypes" />
+            <End Role="ContactPhones" EntitySet="ContactPhones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contacts_ContactTypes" Association="Self.FK_Contacts_ContactTypes">
+            <End Role="ContactTypes" EntitySet="ContactTypes" />
+            <End Role="Contacts" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contacts_Organisations" Association="Self.FK_Contacts_Organisations">
+            <End Role="Organisations" EntitySet="Organisations" />
+            <End Role="Contacts" EntitySet="Contacts" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -341,6 +674,22 @@
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Locations_Countries" Association="Self.FK_Locations_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Locations" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Locations_Organisations" Association="Self.FK_Locations_Organisations">
+            <End Role="Organisations" EntitySet="Organisations" />
+            <End Role="Locations" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Locations_states" Association="Self.FK_Locations_states">
+            <End Role="states" EntitySet="states" />
+            <End Role="Locations" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Password_PasswordCategory" Association="Self.FK_Password_PasswordCategory">
+            <End Role="PasswordCategory" EntitySet="PasswordCategory" />
+            <End Role="Password" EntitySet="Password" />
           </AssociationSet>
           <AssociationSet Name="FK_states_Countries" Association="Self.FK_states_Countries">
             <End Role="Countries" EntitySet="Countries" />
@@ -381,6 +730,52 @@
           <AssociationSet Name="FK_states_Countries" Association="surajmandalModel.FK_states_Countries">
             <End Role="Country" EntitySet="Countries" />
             <End Role="state" EntitySet="states" />
+          </AssociationSet>
+          <EntitySet Name="ContactTypes" EntityType="surajmandalModel.ContactType" />
+          <EntitySet Name="Locations" EntityType="surajmandalModel.Location" />
+          <EntitySet Name="Passwords" EntityType="surajmandalModel.Password" />
+          <AssociationSet Name="FK_Locations_Countries" Association="surajmandalModel.FK_Locations_Countries">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Locations_Organisations" Association="surajmandalModel.FK_Locations_Organisations">
+            <End Role="Organisation" EntitySet="Organisations" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Locations_states" Association="surajmandalModel.FK_Locations_states">
+            <End Role="state" EntitySet="states" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <EntitySet Name="ContactEmails" EntityType="surajmandalModel.ContactEmail" />
+          <EntitySet Name="ContactEmailTypes" EntityType="surajmandalModel.ContactEmailType" />
+          <EntitySet Name="ContactLocations" EntityType="surajmandalModel.ContactLocation" />
+          <EntitySet Name="ContactPhones" EntityType="surajmandalModel.ContactPhone" />
+          <EntitySet Name="ContactPhoneTypes" EntityType="surajmandalModel.ContactPhoneType" />
+          <EntitySet Name="Contacts" EntityType="surajmandalModel.Contact" />
+          <AssociationSet Name="FK_ContactEmails_ContactEmailTypes" Association="surajmandalModel.FK_ContactEmails_ContactEmailTypes">
+            <End Role="ContactEmailType" EntitySet="ContactEmailTypes" />
+            <End Role="ContactEmail" EntitySet="ContactEmails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactPhones_ContactPhoneTypes" Association="surajmandalModel.FK_ContactPhones_ContactPhoneTypes">
+            <End Role="ContactPhoneType" EntitySet="ContactPhoneTypes" />
+            <End Role="ContactPhone" EntitySet="ContactPhones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contacts_ContactTypes" Association="surajmandalModel.FK_Contacts_ContactTypes">
+            <End Role="ContactType" EntitySet="ContactTypes" />
+            <End Role="Contact" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contacts_Organisations" Association="surajmandalModel.FK_Contacts_Organisations">
+            <End Role="Organisation" EntitySet="Organisations" />
+            <End Role="Contact" EntitySet="Contacts" />
+          </AssociationSet>
+          <EntitySet Name="Configurations" EntityType="surajmandalModel.Configuration" />
+          <EntitySet Name="ConfigurationStatus" EntityType="surajmandalModel.ConfigurationStatu" />
+          <EntitySet Name="ConfigurationTypes" EntityType="surajmandalModel.ConfigurationType" />
+          <EntitySet Name="Manufacturers" EntityType="surajmandalModel.Manufacturer" />
+          <EntitySet Name="PasswordCategories" EntityType="surajmandalModel.PasswordCategory" />
+          <AssociationSet Name="FK_Password_PasswordCategory" Association="surajmandalModel.FK_Password_PasswordCategory">
+            <End Role="PasswordCategory" EntitySet="PasswordCategories" />
+            <End Role="Password" EntitySet="Passwords" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
@@ -458,6 +853,7 @@
           <Property Name="Sortname" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="states" Relationship="surajmandalModel.FK_states_Countries" FromRole="Country" ToRole="state" />
+          <NavigationProperty Name="Locations" Relationship="surajmandalModel.FK_Locations_Countries" FromRole="Country" ToRole="Location" />
         </EntityType>
         <EntityType Name="ProductPlan">
           <Key>
@@ -500,6 +896,7 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="countryid" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Country" Relationship="surajmandalModel.FK_states_Countries" FromRole="state" ToRole="Country" />
+          <NavigationProperty Name="Locations" Relationship="surajmandalModel.FK_Locations_states" FromRole="state" ToRole="Location" />
         </EntityType>
         <EntityType Name="Tenant">
           <Key>
@@ -651,6 +1048,8 @@
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <Property Name="DeletedBy" Type="Int32" />
           <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Locations" Relationship="surajmandalModel.FK_Locations_Organisations" FromRole="Organisation" ToRole="Location" />
+          <NavigationProperty Name="Contacts" Relationship="surajmandalModel.FK_Contacts_Organisations" FromRole="Organisation" ToRole="Contact" />
         </EntityType>
         <Association Name="FK_states_Countries">
           <End Type="surajmandalModel.Country" Role="Country" Multiplicity="1" />
@@ -661,6 +1060,321 @@
             </Principal>
             <Dependent Role="state">
               <PropertyRef Name="countryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ContactType">
+          <Key>
+            <PropertyRef Name="ContactTypeId" />
+          </Key>
+          <Property Name="ContactTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenantID" Type="Guid" />
+          <Property Name="ContactTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Contacts" Relationship="surajmandalModel.FK_Contacts_ContactTypes" FromRole="ContactType" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int32" />
+          <Property Name="StateID" Type="Int32" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="isPrimary" Type="Boolean" />
+          <NavigationProperty Name="Country" Relationship="surajmandalModel.FK_Locations_Countries" FromRole="Location" ToRole="Country" />
+          <NavigationProperty Name="Organisation" Relationship="surajmandalModel.FK_Locations_Organisations" FromRole="Location" ToRole="Organisation" />
+          <NavigationProperty Name="state" Relationship="surajmandalModel.FK_Locations_states" FromRole="Location" ToRole="state" />
+        </EntityType>
+        <EntityType Name="Password">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationId" Type="Int32" Nullable="false" />
+          <Property Name="AssetType" Type="Int32" />
+          <Property Name="AssetId" Type="Int32" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordChangeDate" Type="DateTime" Precision="3" />
+          <Property Name="IsEmbedded" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="URL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="AccessToAll" Type="Boolean" />
+          <NavigationProperty Name="PasswordCategory" Relationship="surajmandalModel.FK_Password_PasswordCategory" FromRole="Password" ToRole="PasswordCategory" />
+        </EntityType>
+        <Association Name="FK_Locations_Countries">
+          <End Type="surajmandalModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="surajmandalModel.Location" Role="Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Locations_Organisations">
+          <End Type="surajmandalModel.Organisation" Role="Organisation" Multiplicity="1" />
+          <End Type="surajmandalModel.Location" Role="Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organisation">
+              <PropertyRef Name="OrgId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="OrganizationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Locations_states">
+          <End Type="surajmandalModel.state" Role="state" Multiplicity="0..1" />
+          <End Type="surajmandalModel.Location" Role="Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="state">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ContactEmail">
+          <Key>
+            <PropertyRef Name="ContactEmailId" />
+          </Key>
+          <Property Name="ContactEmailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactId" Type="Int32" />
+          <Property Name="EmailTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isPrimaryEmail" Type="Boolean" />
+          <Property Name="isDeleted" Type="Boolean" />
+          <NavigationProperty Name="ContactEmailType" Relationship="surajmandalModel.FK_ContactEmails_ContactEmailTypes" FromRole="ContactEmail" ToRole="ContactEmailType" />
+        </EntityType>
+        <EntityType Name="ContactEmailType">
+          <Key>
+            <PropertyRef Name="EmailTypeId" />
+          </Key>
+          <Property Name="EmailTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ContactEmails" Relationship="surajmandalModel.FK_ContactEmails_ContactEmailTypes" FromRole="ContactEmailType" ToRole="ContactEmail" />
+        </EntityType>
+        <EntityType Name="ContactLocation">
+          <Key>
+            <PropertyRef Name="ContactLocationId" />
+          </Key>
+          <Property Name="ContactLocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenantID" Type="Guid" />
+          <Property Name="ContactLocationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ContactPhone">
+          <Key>
+            <PropertyRef Name="ContactPhoneId" />
+          </Key>
+          <Property Name="ContactPhoneId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactId" Type="Int32" />
+          <Property Name="PhoneTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ext" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="isPrimaryPhone" Type="Boolean" />
+          <Property Name="isDeleted" Type="Boolean" />
+          <NavigationProperty Name="ContactPhoneType" Relationship="surajmandalModel.FK_ContactPhones_ContactPhoneTypes" FromRole="ContactPhone" ToRole="ContactPhoneType" />
+        </EntityType>
+        <EntityType Name="ContactPhoneType">
+          <Key>
+            <PropertyRef Name="PhoneTypeId" />
+          </Key>
+          <Property Name="PhoneTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PhoneTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ContactPhones" Relationship="surajmandalModel.FK_ContactPhones_ContactPhoneTypes" FromRole="ContactPhoneType" ToRole="ContactPhone" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TypeID" Type="Int32" />
+          <Property Name="LocationID" Type="Int32" />
+          <Property Name="IsImportantContact" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="ContactType" Relationship="surajmandalModel.FK_Contacts_ContactTypes" FromRole="Contact" ToRole="ContactType" />
+          <NavigationProperty Name="Organisation" Relationship="surajmandalModel.FK_Contacts_Organisations" FromRole="Contact" ToRole="Organisation" />
+        </EntityType>
+        <Association Name="FK_ContactEmails_ContactEmailTypes">
+          <End Type="surajmandalModel.ContactEmailType" Role="ContactEmailType" Multiplicity="1" />
+          <End Type="surajmandalModel.ContactEmail" Role="ContactEmail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactEmailType">
+              <PropertyRef Name="EmailTypeId" />
+            </Principal>
+            <Dependent Role="ContactEmail">
+              <PropertyRef Name="EmailTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactPhones_ContactPhoneTypes">
+          <End Type="surajmandalModel.ContactPhoneType" Role="ContactPhoneType" Multiplicity="1" />
+          <End Type="surajmandalModel.ContactPhone" Role="ContactPhone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactPhoneType">
+              <PropertyRef Name="PhoneTypeId" />
+            </Principal>
+            <Dependent Role="ContactPhone">
+              <PropertyRef Name="PhoneTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contacts_ContactTypes">
+          <End Type="surajmandalModel.ContactType" Role="ContactType" Multiplicity="0..1" />
+          <End Type="surajmandalModel.Contact" Role="Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactType">
+              <PropertyRef Name="ContactTypeId" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contacts_Organisations">
+          <End Type="surajmandalModel.Organisation" Role="Organisation" Multiplicity="1" />
+          <End Type="surajmandalModel.Contact" Role="Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organisation">
+              <PropertyRef Name="OrgId" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="OrganizationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Configuration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Typeid" Type="Int32" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="OrganizationId" Type="Int32" Nullable="false" />
+          <Property Name="ExpirationDate" Type="DateTime" Precision="3" />
+          <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="3" />
+          <Property Name="PurchasedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SerialNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssetTag" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ManufacturerId" Type="Int32" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LocationId" Type="Int32" />
+          <Property Name="ContactId" Type="Int32" />
+          <Property Name="InstallDate" Type="DateTime" Precision="3" />
+          <Property Name="InstalledBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PhysicalPosition" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Hostname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryIP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="MacAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DefaultGateway" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlatformId" Type="Int32" />
+          <Property Name="OperatingSystemId" Type="Int32" />
+          <Property Name="OperatingSystemNotes" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="AccesstoAll" Type="Boolean" />
+          <Property Name="DataSourceId" Type="Int64" />
+          <Property Name="DataSourceType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ConfigurationStatu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TenantId" Type="Guid" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ConfigurationType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TenantId" Type="Guid" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Manufacturer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TenantId" Type="Guid" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="PasswordCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenantId" Type="Guid" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Passwords" Relationship="surajmandalModel.FK_Password_PasswordCategory" FromRole="PasswordCategory" ToRole="Password" />
+        </EntityType>
+        <Association Name="FK_Password_PasswordCategory">
+          <End Type="surajmandalModel.PasswordCategory" Role="PasswordCategory" Multiplicity="0..1" />
+          <End Type="surajmandalModel.Password" Role="Password" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasswordCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Password">
+              <PropertyRef Name="CategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -915,6 +1629,227 @@
                 <ScalarProperty Name="ShortName" ColumnName="ShortName" />
                 <ScalarProperty Name="OrgName" ColumnName="OrgName" />
                 <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactTypes">
+            <EntityTypeMapping TypeName="surajmandalModel.ContactType">
+              <MappingFragment StoreEntitySet="ContactTypes">
+                <ScalarProperty Name="ContactTypeName" ColumnName="ContactTypeName" />
+                <ScalarProperty Name="TenantID" ColumnName="TenantID" />
+                <ScalarProperty Name="ContactTypeId" ColumnName="ContactTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="surajmandalModel.Location">
+              <MappingFragment StoreEntitySet="Locations">
+                <ScalarProperty Name="isPrimary" ColumnName="isPrimary" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Passwords">
+            <EntityTypeMapping TypeName="surajmandalModel.Password">
+              <MappingFragment StoreEntitySet="Password">
+                <ScalarProperty Name="AccessToAll" ColumnName="AccessToAll" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsEmbedded" ColumnName="IsEmbedded" />
+                <ScalarProperty Name="PasswordChangeDate" ColumnName="PasswordChangeDate" />
+                <ScalarProperty Name="Password1" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="AssetId" ColumnName="AssetId" />
+                <ScalarProperty Name="AssetType" ColumnName="AssetType" />
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactEmails">
+            <EntityTypeMapping TypeName="surajmandalModel.ContactEmail">
+              <MappingFragment StoreEntitySet="ContactEmails">
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="isPrimaryEmail" ColumnName="isPrimaryEmail" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailTypeId" ColumnName="EmailTypeId" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="ContactEmailId" ColumnName="ContactEmailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactEmailTypes">
+            <EntityTypeMapping TypeName="surajmandalModel.ContactEmailType">
+              <MappingFragment StoreEntitySet="ContactEmailTypes">
+                <ScalarProperty Name="EmailTypeName" ColumnName="EmailTypeName" />
+                <ScalarProperty Name="EmailTypeId" ColumnName="EmailTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactLocations">
+            <EntityTypeMapping TypeName="surajmandalModel.ContactLocation">
+              <MappingFragment StoreEntitySet="ContactLocations">
+                <ScalarProperty Name="ContactLocationName" ColumnName="ContactLocationName" />
+                <ScalarProperty Name="TenantID" ColumnName="TenantID" />
+                <ScalarProperty Name="ContactLocationId" ColumnName="ContactLocationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactPhones">
+            <EntityTypeMapping TypeName="surajmandalModel.ContactPhone">
+              <MappingFragment StoreEntitySet="ContactPhones">
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="isPrimaryPhone" ColumnName="isPrimaryPhone" />
+                <ScalarProperty Name="Ext" ColumnName="Ext" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="PhoneTypeId" ColumnName="PhoneTypeId" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="ContactPhoneId" ColumnName="ContactPhoneId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactPhoneTypes">
+            <EntityTypeMapping TypeName="surajmandalModel.ContactPhoneType">
+              <MappingFragment StoreEntitySet="ContactPhoneTypes">
+                <ScalarProperty Name="PhoneTypeName" ColumnName="PhoneTypeName" />
+                <ScalarProperty Name="PhoneTypeId" ColumnName="PhoneTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="surajmandalModel.Contact">
+              <MappingFragment StoreEntitySet="Contacts">
+                <ScalarProperty Name="IsImportantContact" ColumnName="IsImportantContact" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Configurations">
+            <EntityTypeMapping TypeName="surajmandalModel.Configuration">
+              <MappingFragment StoreEntitySet="Configuration">
+                <ScalarProperty Name="DataSourceType" ColumnName="DataSourceType" />
+                <ScalarProperty Name="DataSourceId" ColumnName="DataSourceId" />
+                <ScalarProperty Name="AccesstoAll" ColumnName="AccesstoAll" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="OperatingSystemNotes" ColumnName="OperatingSystemNotes" />
+                <ScalarProperty Name="OperatingSystemId" ColumnName="OperatingSystemId" />
+                <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
+                <ScalarProperty Name="DefaultGateway" ColumnName="DefaultGateway" />
+                <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
+                <ScalarProperty Name="PrimaryIP" ColumnName="PrimaryIP" />
+                <ScalarProperty Name="Hostname" ColumnName="Hostname" />
+                <ScalarProperty Name="PhysicalPosition" ColumnName="PhysicalPosition" />
+                <ScalarProperty Name="InstalledBy" ColumnName="InstalledBy" />
+                <ScalarProperty Name="InstallDate" ColumnName="InstallDate" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
+                <ScalarProperty Name="AssetTag" ColumnName="AssetTag" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="PurchasedBy" ColumnName="PurchasedBy" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Typeid" ColumnName="Typeid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConfigurationStatus">
+            <EntityTypeMapping TypeName="surajmandalModel.ConfigurationStatu">
+              <MappingFragment StoreEntitySet="ConfigurationStatus">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConfigurationTypes">
+            <EntityTypeMapping TypeName="surajmandalModel.ConfigurationType">
+              <MappingFragment StoreEntitySet="ConfigurationType">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Manufacturers">
+            <EntityTypeMapping TypeName="surajmandalModel.Manufacturer">
+              <MappingFragment StoreEntitySet="Manufacturer">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PasswordCategories">
+            <EntityTypeMapping TypeName="surajmandalModel.PasswordCategory">
+              <MappingFragment StoreEntitySet="PasswordCategory">
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

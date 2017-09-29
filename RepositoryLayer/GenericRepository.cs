@@ -22,6 +22,7 @@ namespace RepositoryLayer
 
         public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
         {
+
             IQueryable<TEntity> query = dbSet;
 
             if (filter != null)
@@ -44,14 +45,20 @@ namespace RepositoryLayer
                 return query.ToList();
             }
         }
-
+        //public virtual IEnumerable<Organisation> GetAllOrg()
+        //{
+        //    var query = (from result in context.Organisations
+        //                                 where result.isDeleted == true
+        //                 select result).ToList();
+        //    return query;
+        //}
         public virtual TEntity GetByID(object id)
         {
             return dbSet.Find(id);
         }
         public virtual state GetStateByID(int id)
         {
-         var   user =   context.states.FirstOrDefault(c => c.countryid == id);
+            var user = context.states.FirstOrDefault(c => c.countryid == id);
 
             return user;
 
@@ -74,6 +81,7 @@ namespace RepositoryLayer
             {
                 dbSet.Attach(entityToDelete);
             }
+
             dbSet.Remove(entityToDelete);
         }
 
@@ -87,7 +95,6 @@ namespace RepositoryLayer
         {
             //dbSet.AddOrUpdate(identifierExpression, entitiesToUpdate);
         }
-
 
     }
 }
